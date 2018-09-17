@@ -112,21 +112,5 @@ form.search {
   width: 100%;
   padding: 20px;
 }
-.search-card-wrap {
-  display: inline-block;
-  vertical-align: top;
-  width: 50%;
-  padding: 10px;
-}
-.search-card {
-  display: block;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-  color: #000;
-}
-  .search-card .title {
-    font-size: 1.75em;
-  }
 </style>
 
