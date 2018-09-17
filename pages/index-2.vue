@@ -43,18 +43,39 @@
     </form>
     <section class="search-result">
 
-      <app-booth />
+      <app-booth 
+        v-for="(booth, index) in booths"
+        :key="index"
+        :booth="booth"/>
 
     </section>
   </main>
 </template>
 
 <script>
+
+import axios from 'axios'
+
 import AppBooth from '../components/AppBooth'
 
 export default {
   components: { AppBooth },
-  layout: 'home'
+  layout: 'home',
+  data() {
+    return {
+      booths: []
+    }
+  },
+  created() {
+    axios.get('http://localhost:3001/booths')
+      .then(res => {
+        console.log(res)
+        res.data.booths.forEach(booth => {
+        this.booths.push(booth)
+        })
+        console.log(this.booths)
+      })
+  }
 }
 
 </script>
@@ -93,6 +114,7 @@ form.search {
 }
 .search-card-wrap {
   display: inline-block;
+  vertical-align: top;
   width: 50%;
   padding: 10px;
 }
