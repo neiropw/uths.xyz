@@ -2,9 +2,9 @@
   <nav class="nav">
     <ul>
       <li><nuxt-link to="/" class="ms">トップページ</nuxt-link></li>
-      <li><a href="#" class="ei">開催概要</a></li>
+      <li><nuxt-link to="/about" class="ei">開催概要</nuxt-link></li>
       <li><a href="http://www.tochigi-edu.ed.jp/utsunomiyakogyo/nc2/" target="_blank" class="bd">学校公式サイト</a></li>
-      <li><a href="#" class="es">会場マップ</a></li>
+      <li><nuxt-link to="/map" class="es">会場マップ</nuxt-link></li>
     </ul>
   </nav>
 </template>
