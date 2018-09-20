@@ -1,39 +1,46 @@
 <template>
   <main class="container">
-    <div class="booth-title">
-      <span class="label label-category">{{ categoryToName(booth.category) }}</span>
-      <h1 class="booth-name">{{ booth.name }}</h1>
+    <div v-if="alerts">
+      <div
+        v-for="(alert, index) in alerts"
+        :key="index">{{ alert.title }}</div>
     </div>
-    <p class="booth-detail">
-      {{ booth.content !== null ? booth.content : '説明はブースで行います！　ぜひお立ち寄りください！' }}
-    </p>
-    <h2 class="booth-info">このブースの詳しい説明</h2>
-    <div class="row">
-      <div class="column">
-        <table class="info">
-          <tr>
-            <th>担当</th>
-            <td><span class="label label-person">{{ booth.person.name }}</span></td>
-          </tr>
-          <tr>
-            <th>場所</th>
-            <td>
-              <span class="label label-place">{{ placeCategoryToName(booth.place.category) }}{{ booth.place.floor !== null ? ` ${booth.place.floor}階` : '' }}</span>
-            </td>
-          </tr>
-        </table>
+    <div v-if="isReady">
+      <div class="booth-title">
+        <span class="label label-category">{{ categoryToName(booth.category) }}</span>
+        <h1 class="booth-name">{{ booth.name }}</h1>
       </div>
-      <div class="column">
-        <table>
-          <tr>
-            <th>備考</th>
-            <td>
-              <ul>
-                <li v-for="(remark, index) in booth.remarks" :key="index">{{ remark }}</li>
-              </ul>
-            </td>
-          </tr>
-        </table>
+      <p class="booth-detail">
+        {{ booth.content !== null ? booth.content : '説明はブースで行います！　ぜひお立ち寄りください！' }}
+      </p>
+      <h2 class="booth-info">このブースの詳しい説明</h2>
+      <div class="row">
+        <div class="column">
+          <table class="info">
+            <tr>
+              <th>担当</th>
+              <td><span class="label label-person">{{ booth.person.name }}</span></td>
+            </tr>
+            <tr>
+              <th>場所</th>
+              <td>
+                <span class="label label-place">{{ placeCategoryToName(booth.place.category) }}{{ booth.place.floor !== null ? ` ${booth.place.floor}階` : '' }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="column">
+          <table>
+            <tr>
+              <th>備考</th>
+              <td>
+                <ul>
+                  <li v-for="(remark, index) in booth.remarks" :key="index">{{ remark }}</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </main>
@@ -70,40 +77,63 @@ export default {
       }
     }
   },
+  head() {
+    return {
+      title: `${this.title} - 宇工祭Webパンフレット`
+    }
+  },
   data() {
     return {
+      title: '',
+      isReady: false,
+      alerts: [],
       booth: {
-        id: 1,
-        name: 'ミニ新幹線(E5系)の試乗体験',
-        category: 'PLAY',
-        content: null,
+        id: 'booth.id',
+        name: 'booth.name',
+        category: 'booth.category',
+        content: 'booth.content',
         remarks: [
-          '機械システム系 実習棟 西通路(外の駐輪場寄り)で行っております。'
+          'booth.remarks'
         ],
         person: {
-          id: 1,
-          category: 'MS',
-          name: '機械科'
+          id: 'booth.person.id',
+          category: 'booth.person.category',
+          name: 'booth.person.name'
         },
         place: {
-          id: 1,
-          category: 'MS',
-          floor: 1,
-          name: null
-        },
-        'times': null
+          id: 'booth.place.id',
+          category: 'booth.place.category',
+          floor: 'booth.place.floor',
+          name: 'booth.place.name'
+        }
       }
     }
   },
   created() {
-    // axios.get('http://localhost:3001/booths')
-    //   .then(res => {
-    //     console.log(res)
-    //     res.data.booths.forEach(booth => {
-    //     this.booths.push(booth)
-    //     })
-    //     console.log(this.booths)
-    //   })
+    if(this.$route.params.id !== undefined) {
+      axios.get(`http://localhost:3001/booths/${this.$route.params.id}`)
+        .then(res => {
+          if(res.status === 200 && res.data.booth) {
+            // console.log(res)
+            this.booth = res.data.booth
+            this.title = `${res.data.booth.name}(${res.data.booth.person.name})`
+            this.isReady = true
+            // console.log(this.booth)
+          } else {
+            this.alerts.push({
+              title: '見つかりません！',
+              content: 'お探しのブースは、Web版パンフレットに登録されていません。'
+            })
+            this.title = '見つかりません'
+          }
+        })
+      return
+    }
+    this.alerts.push({
+      title: '見つかりません！',
+      content: 'お探しのブースは、Web版パンフレットに登録されていません。'
+    })
+    this.title = '見つかりません'
   }
 }
 
