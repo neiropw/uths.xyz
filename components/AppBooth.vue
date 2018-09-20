@@ -1,6 +1,6 @@
 <template>
   <div class="search-card-wrap" :booth="booth">
-    <a class="search-card" href="#">
+    <nuxt-link class="search-card" :to="'/booths/' + booth.id">
       <div class="tags">
         <span class="label label-category">{{ categoryToName(booth.category) }}</span>
         <span class="label label-person">{{ booth.person.name }}</span>
@@ -10,7 +10,7 @@
         <div class="title">{{ booth.name }}</div>
         <div class="content">{{ booth.content }}</div>
       </div>
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
@@ -64,5 +64,5 @@ export default {
   .search-card .card-content .title {
     font-size: 1.75em;
   }
-  
+
 </style>
