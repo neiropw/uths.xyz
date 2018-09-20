@@ -69,11 +69,11 @@ export default {
   created() {
     axios.get('http://localhost:3001/booths')
       .then(res => {
-        console.log(res)
+        // console.log(res)
         res.data.booths.forEach(booth => {
-        this.booths.push(booth)
+          this.booths.push(booth)
         })
-        console.log(this.booths)
+        // console.log(this.booths)
       })
   }
 }
