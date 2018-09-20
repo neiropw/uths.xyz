@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <div>
     <h1 class="page-header">宇工祭パンフレット on WEB<small> powered by neiro.pw</small></h1>
     <form class="search">
       <span>
@@ -49,7 +49,7 @@
         :booth="booth"/>
 
     </section>
-  </main>
+  </div>
 </template>
 
 <script>

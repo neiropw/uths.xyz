@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <div>
     <div v-if="alerts">
       <div
         v-for="(alert, index) in alerts"
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -51,7 +51,7 @@
 import axios from 'axios'
 
 export default {
-  layout: 'booth',
+  layout: 'page',
   methods: {
     categoryToName(category) {
       switch(category) {

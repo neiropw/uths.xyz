@@ -11,7 +11,9 @@
       </div>
     </header>
     <app-navbar />
-    <nuxt/>
+    <main class="container">
+      <nuxt/>
+    </main>
   </div>
 </template>
 
