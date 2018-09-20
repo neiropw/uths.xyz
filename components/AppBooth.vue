@@ -46,6 +46,7 @@ export default {
 </script>
 
 <style scoped>
+
 .search-card-wrap {
   display: inline-block;
   vertical-align: top;
@@ -63,13 +64,5 @@ export default {
   .search-card .card-content .title {
     font-size: 1.75em;
   }
-.label {
-  display: inline-block;
-  margin: 0 5px;
-  padding: 5px;
-  font-size: 0.95em;
-}
-  .label-category { margin-left: 0; background: rgb(255, 80, 80); color: #fff; }
-  .label-person { background: rgb(255, 153, 51); color: #fff; }
-  .label-place { background: rgb(91, 155, 213); color: #fff; }
+  
 </style>

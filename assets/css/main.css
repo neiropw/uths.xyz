@@ -1,0 +1,53 @@
+/* Tag */
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+  }
+html {
+    width: 100%; height: 100%;
+    margin: 0; padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url('/bg.jpg');
+}
+small {
+    font-size: 1rem;
+}
+
+/* Class */
+.container {
+    width: 90%;
+    margin: 50px auto;
+        margin-top: 20px;
+        margin-bottom: 0;
+    padding: 50px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+    .container .page-header {
+        font-weight: normal;
+        font-size: 2em;
+        text-align: center;
+    }
+
+.row {
+    overflow: hidden;
+    padding: 20px;
+}
+.column {
+    width: 50%;
+    float: left;
+}
+
+.label {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px;
+    font-size: 0.95em;
+}
+.label-category { background: rgb(255, 80, 80); color: #fff; }
+.label-person { background: rgb(255, 153, 51); color: #fff; }
+.label-place { background: rgb(91, 155, 213); color: #fff; }
+.label-time { background: rgb(112, 173, 71); color: #fff; }
