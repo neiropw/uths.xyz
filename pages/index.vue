@@ -69,44 +69,45 @@ export default {
   created() {
     axios.get('http://localhost:3001/booths')
       .then(res => {
-        console.log(res)
+        // console.log(res)
         res.data.booths.forEach(booth => {
-        this.booths.push(booth)
+          this.booths.push(booth)
         })
-        console.log(this.booths)
+        // console.log(this.booths)
       })
   }
 }
 
 </script>
 
-<style>
+<style scoped>
 *:focus {
   outline: none;
 }
+
 form.search {
   width: 100%;
   display: table;
   padding: 20px 0;
 }
-  .search span {
-    display: table-cell;
-    width: 25%;
-    padding: 10px;
-  }
-    .search span select, .search span.button button {
-      display: inline-block;
-      padding: 5px;
-      width: 100%;
-      font-size: 1.4em;
-      height: 3rem;
-      border: none;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    }
-      .search span select.ms { background: rgb(255, 80, 80); color: #fff; }
-      .search span select.ei { background: rgb(255, 153, 51); color: #fff; }
-      .search span select.bd { background: rgb(91, 155, 213); color: #fff; }
-      .search span button.es { background: rgb(112, 173, 71); color: #fff; }
+.search span {
+  display: table-cell;
+  width: 25%;
+  padding: 10px;
+}
+.search span select, .search span.button button {
+  display: inline-block;
+  padding: 5px;
+  width: 100%;
+  font-size: 1.4em;
+  height: 3rem;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.search span select.ms { background: rgb(255, 80, 80); color: #fff; }
+.search span select.ei { background: rgb(255, 153, 51); color: #fff; }
+.search span select.bd { background: rgb(91, 155, 213); color: #fff; }
+.search span button.es { background: rgb(112, 173, 71); color: #fff; }
 
 .search-result {
   width: 100%;
